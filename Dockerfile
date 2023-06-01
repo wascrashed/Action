@@ -1,5 +1,5 @@
 # Используйте базовый образ PHP с поддержкой Apache
-FROM php:7.4-apache
+FROM php:8.1.9-apache
 
 # Установите необходимые расширения PHP
 RUN docker-php-ext-install pdo pdo_mysql
@@ -13,7 +13,7 @@ RUN a2enmod rewrite
 # Копируйте исходный код приложения в контейнер
 COPY . /var/www/html
 
-# Установите зависимости с помощью Composer
+#Установка зависимостей Composer с переменной окрудения COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install
 
 # Установите правильные разрешения на папку хранения кэша Laravel
